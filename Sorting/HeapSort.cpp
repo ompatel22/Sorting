@@ -5,27 +5,6 @@ void swap(int& a,int& b)
 {
 	int temp=a;a=b;b=temp;
 }
-void MaxHeapify(int a[],int size,int ind)
-{
-	//In concept of Heapify we have to convert Complete Binary Tree in to a Max Heap
-	//for this we are finding max from left and right of current node & after that we are performing swaping
-	int largest=ind;
-	int right=2*ind+1;
-	int left=2*ind+2;
-	if(left<size && a[left]>a[largest])
-	{
-		largest=left;
-	}
-	if(right<size && a[right]>a[largest])
-	{
-		largest=right;
-	}
-	if(largest!=ind)
-	{
-		swap(a[ind],a[largest]);
-		MaxHeapify(a,size,largest);//for the current element which we have swapped this fun will be called again because now current node will be at largest position.
-	}
-}
 //with Out Recursion
 void Adjust(int a[],int n,int i)
 {
@@ -50,6 +29,29 @@ void Adjust(int a[],int n,int i)
 	//insertion of key at root(j)-->which is j-1/2
 	a[(j-1)/2]=key;
 }
+//with Recursion
+void MaxHeapify(int a[],int size,int ind)
+{
+	//In concept of Heapify we have to convert Complete Binary Tree in to a Max Heap
+	//for this we are finding max from left and right of current node & after that we are performing swaping
+	int largest=ind;
+	int right=2*ind+1;
+	int left=2*ind+2;
+	if(left<size && a[left]>a[largest])
+	{
+		largest=left;
+	}
+	if(right<size && a[right]>a[largest])
+	{
+		largest=right;
+	}
+	if(largest!=ind)
+	{
+		swap(a[ind],a[largest]);
+		MaxHeapify(a,size,largest);//for the current element which we have swapped this fun will be called again because now current node will be at largest position.
+	}
+}
+
 void HeapSort(int a[],int size)
 {
 	//first we have to create a Max Heap Tree From a Complete Binary Tree
