@@ -5,6 +5,7 @@ void Merge(int a[],int l,int m,int r)
 {
 	int result[r-l+1];
 	int i=l,j=m+1,k=0;
+	
 	while(i<=m && j<=r)
 	{
 		if(a[i]<a[j])
@@ -13,18 +14,13 @@ void Merge(int a[],int l,int m,int r)
 			result[k++]=a[j++];	
 	}
 	while(i<=m)
-	{
 		result[k++]=a[i++];
-	}	
+	
 	while(j<=r)
-	{
 		result[k++]=a[j++];
-	}
 	
 	for(int i=l;i<=r;i++)
-	{
 		a[i]=result[i-l];
-	}
 }
 
 
@@ -45,8 +41,6 @@ int main()
 {
 	int size=8;
 	int a[]={42,57,68,77,7,15,29,35};
-	//int l=0,n=7,m=3;
-	//MergeSort(a,l,m,n);
 	MergeSort(a,0,7);
 	for(int i=0;i<=7;i++)
 	cout<<a[i]<<" ";
